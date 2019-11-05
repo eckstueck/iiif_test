@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MyCoRe-ImageViewer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="js/iview-client-base.js"></script>
+    <script src="js/iview-client-desktop.js"></script>
+    <script src="js/iview-client-iiif.js"></script>
+    <script src="js/iview-client-metadata.js"></script>
+    <script src="js/manifesto.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--<script src="../META-INF/resources/modules/iview2/js/iview-client-metadata.js"></script>  -->
+    <link href="css/default.css" type="text/css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="../META-INF/resources/components/iview/templates/mobile/jquery.mobile-1.3.2.min.css" />     -->
+    <script>
+
+        // window.onload = function () {
+        //     var json = {
+        //             properties: {
+        //                 derivateURL: "http://localhost:8291/mir/servlets/MCRFileNodeServlet/dbt_derivate_00000003/",
+        //                 metsURL: "http://localhost:8291/mir/servlets/MCRMETSServlet/dbt_derivate_00000003/",
+        //                 canvas: {
+        //                     overview: {
+        //                         enabled: true
+        //                     }
+        //                 },
+        //                 i18nURL: "http://localhost:8291/mir/rsc/locale/translate/{lang}/component.mets.*,component.viewer.*",
+        //                 derivate: "dbt_derivate_00000003",
+        //                 filePath: "/Bibliotheca_536682534_1_1650_0005.tif",
+        //                 mobile: false,
+        //                 adminMail: "mcradmin@mycore.de",
+        //                 tileProviderPath: "http://localhost:8291/mir/servlets/MCRTileServlet/",
+        //                 imageXmlPath: "http://localhost:8291/mir/servlets/MCRTileServlet/",
+        //                 pdfCreatorURI: "http://localhost:8291/mir/pdf",
+        //                 text: {
+        //                     enabled: false
+        //                 },
+        //                 doctype: "manifest",
+        //                 webApplicationBaseURL: "http://localhost:8291/mir/",
+        //                 metadataURL: "http://localhost:8291/mir/receive/dbt_mods_00000009?XSL.Transformer\u003dmycoreobject-viewer",
+        //                 pdfCreatorStyle: "pdf",
+        //                 objId: "dbt_mods_00000009",
+        //                 lang: "de",
+        //                 maximalPageScale: 1,
+        //                 permalink: {
+        //                     enabled: true,
+        //                     updateHistory: false,
+        //                     viewerLocationPattern: "/classes/example/MyCoReImageViewer.html"
+        //                 },
+        //                 imageAPIURL: 'http://localhost:8291/mir/rsc/iiif/image/Iview/',
+        //                 manifestURL: 'http://localhost:8291/mir/rsc/iiif/presentation/mets/dbt_derivate_00000003/manifest'
+        //             }
+        //       }
+        //     ;
+        //     new mycore.viewer.MyCoReViewer(jQuery("body"), json.properties);
+        // };
+        window.onload = function () {
+            var json = {
+                    properties: {
+                        canvas: {
+                            overview: {
+                                enabled: true
+                            }
+                        },
+                        mobile: false,
+                        text: {
+                            enabled: false
+                        },
+                        doctype: "manifest",
+                        lang: "de",
+                        maximalPageScale: 1,
+                        permalink: {
+                          updateHistory: false
+                        },
+                        i18nURL: 'i18n/{lang}.json',
+                        webApplicationBaseURL: location.href.substr(0,location.href.lastIndexOf('/')),
+                        // derivate: "mir_derivate_00000002",
+                        // imageAPIURL: 'http://localhost:8291/mir/rsc/iiif/image/Iview/',
+                        // manifestURL: 'http://localhost:8291/mir/rsc/iiif/presentation/mets/mir_derivate_00000001/manifest',
+                        // filePath: 'JVB_19150328_074_167758667_B1_001.tif'
+                        // derivate: "PPN61540930X",
+                        // imageAPIURL: 'https://digitalesammlungen.uni-weimar.de/viewer/rest/image/',
+                        // manifestURL: 'https://digitalesammlungen.uni-weimar.de/viewer/rest/iiif/manifests/PPN61540930X/manifest/',
+                        // filePath: 'PPN61540930X/00000005.tif'
+                        // // // derivate: "299843",
+                        // imageAPIURL: 'https://ids.lib.harvard.edu/ids/iiif/',
+                        // manifestURL: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
+                        // filePath: '47174896'
+                        // derivate: "GNM_471016",
+                        // imageAPIURL: 'https://haab-digital.klassik-stiftung.de/kulturerbe/rest/image/',
+                        // manifestURL: 'https://haab-digital.klassik-stiftung.de/kulturerbe/rest/iiif/manifests/GNM_471016/manifest/',
+                        // filePath: 'GNM_471016_0165603031.tif'
+                        // derivate: "1/0/6/3/8/2",
+                        imageAPIURL: 'https://media.nga.gov/iiif/public/objects/',
+                        manifestURL: 'https://media.nga.gov/public/manifests/nga_highlights.json',
+                        filePath: '4/6/6/2/6/46626-primary-0-nativeres.ptif'
+                    }
+              }
+            ;
+            new mycore.viewer.MyCoReViewer(jQuery("body"), json.properties);
+        };
+        /*
+         window.onload = function() {
+         window["viewer"] = new mycore.viewer.MyCoReViewer(jQuery("body"), {
+         "mobile": false,
+         doctype: "mets",
+         metsURL: "mets/HisBest_derivate_00000376/mets.xml",
+         "imageXmlPath": "http://archive.thulb.uni-jena.de/hisbest/servlets/MCRTileServlet/",
+         "tileProviderPath": "http://archive.thulb.uni-jena.de/hisbest/servlets/MCRTileServlet/",
+         "filePath": "/RN_0004_0002r.tif",
+         derivate: "HisBest_derivate_00000376",
+         i18nURL: "../META-INF/resources/modules/iview2/i18n/{lang}.json",
+         lang: "de",
+         pdfCreatorStyle: "pdf",
+         pdfCreatorURI: "http://wrackdm17.thulb.uni-jena.de/mets-printer/pdf",
+         metadataURL: null,
+         objId: "",
+         webApplicationBaseURL: "/classes/META-INF/resources",
+         imageOverview: {
+         enabled: true
+         },
+         chapter: {
+         enabled: true,
+         showOnStart: true
+         },
+         permalink: {
+         enabled: true,
+         updateHistory: true,
+         viewerLocationPattern: "/classes/example/MyCoReImageViewer.html"
+
+         },
+         canvas: {
+         overview: {
+         enabled: true
+         }
+         },
+         adminMail: "mcradmin@mycore.de",
+         onClose: function() {
+         console.log("You can define a custom close button behavior.");
+         }
+         });
+         }*/
+    </script>
+</head>
+<body>
+
+</body>
+</html>

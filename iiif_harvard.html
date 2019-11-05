@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MyCoRe-ImageViewer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="js/iview-client-base.js"></script>
+    <script src="js/iview-client-desktop.js"></script>
+    <script src="js/iview-client-iiif.js"></script>
+    <script src="js/iview-client-metadata.js"></script>
+    <script src="js/manifesto.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link href="css/default.css" type="text/css" rel="stylesheet">
+
+    <script>
+        window.onload = function () {
+            var json = {
+                    properties: {
+                        canvas: {
+                            overview: {
+                                enabled: true
+                            }
+                        },
+                        mobile: false,
+                        text: {
+                            enabled: false
+                        },
+                        doctype: "manifest",
+                        lang: "de",
+                        maximalPageScale: 1,
+                        permalink: {
+                          updateHistory: false
+                        },
+                        i18nURL: 'i18n/{lang}.json',
+                        webApplicationBaseURL: location.href.substr(0,location.href.lastIndexOf('/')),
+                        imageAPIURL: 'https://ids.lib.harvard.edu/ids/iiif/',
+                        manifestURL: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
+                        filePath: '47174896'
+                    }
+              }
+            ;
+            new mycore.viewer.MyCoReViewer(jQuery("body"), json.properties);
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>
